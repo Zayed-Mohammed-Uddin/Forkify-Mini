@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Forkify Mini | Find Your Recipes!</title>
+		<link
+			rel="shortcut icon"
+			href="./Image/favicon.png"
+			type="image/x-icon"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./font-awesome-pro-5/css/all.min.css" />
+		<link
+			rel="stylesheet"
+			href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+		/>
+		<link rel="stylesheet" href="./style.css" />
+
+		<!-- Third Party Service -->
+		<script
+			defer
+			src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+		></script>
+		<script
+			defer
+			src="./node_modules/bootstrap/dist/js/bootstrap.min.js"
+		></script>
+		<script defer src="./font-awesome-pro-5/js/pro.min.js"></script>
+
+		<!-- Source Scripts -->
+		<script defer type="module" src="./dist/controller.js"></script>
+	</head>
+	<body>
+		<section
+			class="container-fluid d-flex min-vh-100 align-items-center justify-content-center"
+		>
+			<div class="container">
+				<div class="row g-0">
+					<div class="col-md-12">
+						<nav class="navbar navbar-expand-lg">
+							<div class="container-fluid">
+								<a class="navbar-brand">
+									<img
+										style="height: 3rem"
+										src="./Image/logo.png"
+										alt="LOGO"
+									/>
+								</a>
+								<button
+									class="navbar-toggler"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#navbar"
+									aria-controls="navbar"
+									aria-expanded="false"
+									aria-label="Toggle navigation"
+								>
+									<span class="navbar-toggler-icon"></span>
+								</button>
+								<div
+									class="collapse navbar-collapse"
+									id="navbar"
+								>
+									<form
+										class="d-flex search__container"
+										role="search"
+									>
+										<input
+											class="form-control me-2"
+											id="search_input"
+											type="search"
+											placeholder="Search over 1,000,000 recipes..."
+											aria-label="Search"
+										/>
+										<button
+											class="btn btn-outline-primary"
+											id="search_btn"
+										>
+											<i
+												class="fa-solid fa-magnifying-glass"
+											></i>
+											Search
+										</button>
+									</form>
+
+									<ul
+										class="navbar-nav ms-auto mb-2 mb-lg-0 position-relative"
+									>
+										<li
+											class="nav-item d-flex align-items-center night--mode me-4"
+										>
+											<input
+												class="container_toggle"
+												type="checkbox"
+												id="switch"
+												name="mode"
+											/>
+											<label
+												class="night_mode"
+												for="switch"
+											></label>
+										</li>
+										<li class="nav-item add_to_recipe">
+											<div
+												class="modal fade"
+												id="messageModalToggle"
+												aria-hidden="true"
+												aria-labelledby="messageModalToggleLabel"
+												tabindex="-1"
+											>
+												<div
+													class="modal-xl modal-dialog modal-dialog-centered"
+												>
+													<div class="modal-content">
+														<div
+															class="modal-header"
+														>
+															<h1
+																class="modal-title fs-5"
+																id="messageModalToggleLabel"
+															>
+																POST Message
+															</h1>
+															<button
+																type="button"
+																class="btn-close"
+																data-bs-dismiss="modal"
+																aria-label="Close"
+															></button>
+														</div>
+														<div
+															class="modal-body newModal"
+														></div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="modal fade"
+												id="recipeModal"
+												tabindex="-1"
+												aria-labelledby="ModalLabel"
+												aria-hidden="true"
+											>
+												<div
+													class="modal-xl modal-dialog modal-dialog-centered"
+												>
+													<div class="modal-content">
+														<div
+															class="modal-header"
+														>
+															<h1
+																class="modal-title fs-5"
+																id="ModalLabel"
+															>
+																Add to Recipe
+															</h1>
+															<button
+																type="button"
+																class="btn-close btn-close-yellow"
+																data-bs-dismiss="modal"
+																aria-label="Close"
+															></button>
+														</div>
+														<div class="modal-body">
+															<div
+																class="container my-4"
+															>
+																<form
+																	class="form_container row gy-3"
+																	method="post"
+																>
+																	<div
+																		class="col-md-12"
+																	>
+																		<h4
+																			class="text-start fw-bold"
+																		>
+																			RECIPE
+																			DATA
+																			(4
+																			SERVINGS)
+																		</h4>
+																	</div>
+																	<!-- Title & Publisher -->
+																	<div
+																		class="col-md-6"
+																	>
+																		<label
+																			for="title"
+																			class="form-label"
+																		>
+																			Title
+																		</label>
+																		<input
+																			type="text"
+																			value="ALL Recipe Info"
+																			class="form-control"
+																			id="title"
+																			name="title"
+																			placeholder="Enter recipe title"
+																			required
+																		/>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row"
+																		>
+																			<div
+																				class="col-md-6"
+																			>
+																				<label
+																					for="publisher"
+																					class="form-label"
+																				>
+																					Publisher
+																				</label>
+																				<input
+																					type="text"
+																					value="All Recipe Info"
+																					class="form-control"
+																					id="publisher"
+																					name="publisher"
+																					placeholder="Enter publisher"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-6"
+																			>
+																				<label
+																					for="prep_time"
+																					class="form-label"
+																				>
+																					Prep
+																					Time
+																				</label>
+																				<input
+																					type="number"
+																					value="75"
+																					class="form-control"
+																					id="prep_time"
+																					name="cookingTime"
+																					placeholder="Prep Time"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- URL & Image -->
+																	<div
+																		class="col-md-6"
+																	>
+																		<label
+																			for="url"
+																			class="form-label"
+																		>
+																			URL
+																		</label>
+																		<input
+																			type="url"
+																			class="form-control"
+																			value="https://www.allrecipes.com/recipe/229150/cheesy-amish-breakfast-casserole/"
+																			id="url"
+																			name="sourceUrl"
+																			placeholder="Enter recipe URL"
+																			required
+																		/>
+																	</div>
+																	<div
+																		class="col-md-3"
+																	>
+																		<label
+																			for="image-url"
+																			class="form-label"
+																		>
+																			Image
+																			URL
+																		</label>
+																		<input
+																			type="url"
+																			value="https://wallpaperaccess.com/full/8921557.jpg"
+																			class="form-control"
+																			id="image-url"
+																			name="image"
+																			placeholder="Enter image URL"
+																			required
+																		/>
+																	</div>
+																	<div
+																		class="col-md-3"
+																	>
+																		<label
+																			for="servings"
+																			class="form-label"
+																		>
+																			Servings
+																		</label>
+																		<input
+																			type="number"
+																			value="4"
+																			class="form-control"
+																			id="servings"
+																			name="servings"
+																			placeholder="Number of people to be served..."
+																			required
+																		/>
+																	</div>
+
+																	<!-- Ingredients -->
+																	<div
+																		class="col-md-12"
+																	>
+																		<h4
+																			class="my-3 fw-bold"
+																		>
+																			INGREDIENTS
+																		</h4>
+																	</div>
+																	<!-- Ingredient Rows -->
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-1"
+																					class="form-label"
+																				>
+																					Ingredient
+																					1
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					value="12"
+																					id="ing-1"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					value="tbsp"
+																					class="form-control new_unit"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					value="test"
+																					class="form-control new_ingredient"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-2"
+																					class="form-label"
+																				>
+																					Ingredient
+																					2
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					value="12"
+																					id="ing-2"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-3"
+																					class="form-label"
+																				>
+																					Ingredient
+																					3
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					id="ing-3"
+																					value="12"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-4"
+																					class="form-label"
+																				>
+																					Ingredient
+																					4
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					value="12"
+																					id="ing-4"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-5"
+																					class="form-label"
+																				>
+																					Ingredient
+																					5
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					id="ing-5"
+																					value="12"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-6"
+																					class="form-label"
+																				>
+																					Ingredient
+																					6
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					id="ing-6"
+																					value="12"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-7"
+																					class="form-label"
+																				>
+																					Ingredient
+																					7
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					value="12"
+																					id="ing-7"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-md-6"
+																	>
+																		<div
+																			class="row g-2 align-items-center"
+																		>
+																			<div
+																				class="col-md-3"
+																			>
+																				<label
+																					for="ing-8"
+																					class="form-label"
+																				>
+																					Ingredient
+																					8
+																				</label>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="number"
+																					value="12"
+																					id="ing-8"
+																					class="form-control new_quantity"
+																					placeholder="Quantity"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_unit"
+																					value="tbsp"
+																					placeholder="Unit"
+																					required
+																				/>
+																			</div>
+																			<div
+																				class="col-md-3"
+																			>
+																				<input
+																					type="text"
+																					class="form-control new_ingredient"
+																					value="test"
+																					placeholder="Ingredient"
+																					required
+																				/>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- Submit Button -->
+																	<div
+																		class="text-center mt-4"
+																	>
+																		<button
+																			class="btn-upload text-uppercase px-3 py-2 fw-bold"
+																			data-bs-toggle="modal"
+																			data-bs-target="#messageModalToggle"
+																			type="submit"
+																		>
+																			<i
+																				class="fa-solid fa-upload"
+																			></i>
+																			Upload
+																		</button>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<a
+												class="nav-link add_to_recipe_link"
+												style="font-weight: bold"
+												data-bs-target="#recipeModal"
+												data-bs-toggle="modal"
+												><i
+													class="fa-solid fa-pen-to-square"
+												></i>
+												Add Recipe
+											</a>
+										</li>
+										<li class="nav-item bookmark">
+											<a
+												class="nav-link bookmark_link"
+												style="font-weight: bold"
+												href="#"
+												><i
+													class="fa-solid fa-bookmark"
+												></i>
+												Bookmark
+											</a>
+											<div class="bookmark_container">
+												<h3
+													class="text-center px-3 py-5"
+												>
+													<i
+														class="fal fa-exclamation-triangle"
+													></i>
+													No recipe has been
+													bookmarked yet!
+												</h3>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="col-md-12 col-lg-4">
+						<aside class="sidebar">
+							<ul
+								class="list--container p-0 mb-0"
+								type="none"
+							></ul>
+							<div class="pagination"></div>
+							<div class="copyright--block">
+								<p class="text-search">
+									<i class="fad fa-grin-wink"></i> Start
+									Searching the Recipe
+								</p>
+								<p class="text-muted copyright--text">
+									© Copyright by
+									<strong>Zayed Uddin</strong>. All rights
+									reserved 2025.
+								</p>
+							</div>
+						</aside>
+					</div>
+					<div class="col-md-12 col-lg-8">
+						<div class="recipe_container_fluid">
+							<div
+								class="modal fade"
+								id="linkModal"
+								tabindex="-1"
+								aria-labelledby="linkModalLabel"
+							>
+								<div
+									class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+								>
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1
+												class="modal-title fs-5"
+												id="linkModalLabel"
+											>
+												Shopping List
+											</h1>
+											<button
+												type="button"
+												class="btn-close btn-close-yellow"
+												data-bs-dismiss="modal"
+												aria-label="Close"
+											></button>
+										</div>
+										<div
+											class="modal-container modal-body"
+										></div>
+									</div>
+								</div>
+							</div>
+
+							<div
+								class="modal fade"
+								id="plannerModal"
+								tabindex="-1"
+								aria-labelledby="plannerModalLabel"
+							>
+								<div
+									class="modal-xl modal-dialog modal-dialog-centered modal-dialog-scrollable"
+								>
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1
+												class="modal-title fs-5"
+												id="plannerModalLabel"
+											>
+												<strong>Meal Planner</strong>
+											</h1>
+											<button
+												type="button"
+												class="btn-close btn-close-yellow"
+												data-bs-dismiss="modal"
+												aria-label="Close"
+											></button>
+										</div>
+										<div
+											class="modal-planner modal-body d-flex align-items-center justify-content-center"
+										>
+											<div class="meal-planner">
+												<div class="controls">
+													<select id="meal-category">
+														<option
+															value="breakfast"
+															data-column="0"
+														>
+															Breakfast
+														</option>
+														<option
+															value="lunch"
+															data-column="1"
+														>
+															Lunch
+														</option>
+														<option
+															value="dinner"
+															data-column="2"
+														>
+															Dinner
+														</option>
+														<option
+															value="dessert"
+															data-column="3"
+														>
+															Dessert
+														</option>
+													</select>
+												</div>
+												<div class="grid">
+													<div
+														class="day-header"
+													></div>
+													<div
+														class="meal-header"
+														data-column="0"
+													>
+														Breakfast
+													</div>
+													<div
+														class="meal-header"
+														data-column="1"
+													>
+														Lunch
+													</div>
+													<div
+														class="meal-header"
+														data-column="2"
+													>
+														Dinner
+													</div>
+													<div
+														class="meal-header"
+														data-column="3"
+													>
+														Dessert
+													</div>
+
+													<div
+														class="day"
+														data-row="0"
+													>
+														Monday
+													</div>
+													<div
+														class="meal"
+														data-i="0"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="0"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="0"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="0"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="1"
+													>
+														Tuesday
+													</div>
+													<div
+														class="meal"
+														data-i="1"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="1"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="1"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="1"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="2"
+													>
+														Wednesday
+													</div>
+													<div
+														class="meal"
+														data-i="2"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="2"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="2"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="2"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="3"
+													>
+														Thursday
+													</div>
+													<div
+														class="meal"
+														data-i="3"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="3"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="3"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="3"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="4"
+													>
+														Friday
+													</div>
+													<div
+														class="meal"
+														data-i="4"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="4"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="4"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="4"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="5"
+													>
+														Saturday
+													</div>
+													<div
+														class="meal"
+														data-i="5"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="5"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="5"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="5"
+														data-j="3"
+													></div>
+
+													<div
+														class="day"
+														data-row="6"
+													>
+														Sunday
+													</div>
+													<div
+														class="meal"
+														data-i="6"
+														data-j="0"
+													></div>
+													<div
+														class="meal"
+														data-i="6"
+														data-j="1"
+													></div>
+													<div
+														class="meal"
+														data-i="6"
+														data-j="2"
+													></div>
+													<div
+														class="meal"
+														data-i="6"
+														data-j="3"
+													></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row g-0 recipe_container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
