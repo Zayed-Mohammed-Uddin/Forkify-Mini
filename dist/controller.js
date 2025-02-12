@@ -33,7 +33,6 @@ const controlRecipe = async function () {
 		// starting the timer
 		RecipeView._startTimer();
 	} catch (error) {
-		console.error(error);
 		RecipeView._renderError(error);
 	}
 };
