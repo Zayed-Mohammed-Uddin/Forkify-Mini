@@ -84,13 +84,14 @@ const controlServings = async function (newServings) {
 		await model.loadNutrientsData();
 		RecipeView._update(model.state.recipe);
 	} catch (error) {
-		throw new error();
+		console.error("Error in controlServings:", error);
+		throw error;
 	}
 };
 
 const controlBookmark = function () {
 	if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
-	else model.removeBookmark();
+	else model.removeBookmark(model.state.recipe.id);
 	RecipeView._update(model.state.recipe);
 	BookmarkView._render(model.state.bookmarks);
 };

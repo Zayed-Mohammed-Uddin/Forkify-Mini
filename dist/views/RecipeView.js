@@ -43,10 +43,10 @@ class RecipeView extends View {
 								<i class="fas fa-users"></i>
 								<span class="item-info-text">${this._data.servings}</span>
 								<span class="item-info-label">SERVINGS</span>
-								<button class="btn_update_servings" data-update-to=${this._data.servings - 1}>
+								<button class="btn_update_servings" data-update-to="${this._data.servings - 1}">
 									<i class="fas fa-minus-circle"></i>
 								</button>
-								<button class="btn_update_servings" data-update-to=${this._data.servings + 1}>
+								<button class="btn_update_servings" data-update-to="${this._data.servings + 1}">
 									<i class="fas fa-plus-circle"></i>
 								</button>
 							</div>
