@@ -27,7 +27,7 @@ class PreviewView {
                                 ${
 									list.key === API_KEY
 										? `<div class="list--item-desc-icon">
-                                        <i class="fad fa-user-circle"></i>
+                                        <i class="fas fa-user-circle"></i>
                                     </div>`
 										: ""
 								}

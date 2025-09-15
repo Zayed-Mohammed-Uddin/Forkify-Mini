@@ -9,8 +9,8 @@ class ShoppingListView extends View {
 				return `
                 <div class="input--lists d-flex mb-3">
                     <input class="form-control" type="text" value="${ls}" title="${ls}" disabled readonly>
-                    <button type="button" class="btn btn-primary btn-edit"><i class="fad fa-edit"></i>Edit</button>
-                    <button type="button" class="btn btn-danger btn-delete"><i class="fad fa-trash-alt"></i>Delete</button>
+                    <button type="button" class="btn btn-primary btn-edit"><i class="fas fa-edit"></i>Edit</button>
+                    <button type="button" class="btn btn-danger btn-delete"><i class="fas fa-trash-alt"></i>Delete</button>
                 </div>`;
 			})
 			.join("\n");

@@ -594,10 +594,10 @@ button[type="submit"]:hover {
 }
 
 .ingredients-container:hover .fa-check-circle,
-i.fa-cart-plus {
+i.fa-shopping-cart {
 	display: none;
 }
-.ingredients-container:hover .fa-cart-plus {
+.ingredients-container:hover .fa-shopping-cart {
 	display: block;
 }
 .ingredients-container h3,

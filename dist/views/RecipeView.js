@@ -35,19 +35,19 @@ class RecipeView extends View {
 					<div class="recipe__details">
 						<div class="recipe__details__info">
 							<div class="recipe-info">
-								<i class="fad fa-clock"></i>
+								<i class="fas fa-clock"></i>
 								<span class="item-info-text">${this._data.cooking_time}</span>
 								<span class="item-info-label">MINUTES</span>
 							</div>
 							<div class="recipe-info">
-								<i class="fad fa-users"></i>
+								<i class="fas fa-users"></i>
 								<span class="item-info-text">${this._data.servings}</span>
 								<span class="item-info-label">SERVINGS</span>
 								<button class="btn_update_servings" data-update-to=${this._data.servings - 1}>
-									<i class="fad fa-minus-circle"></i>
+									<i class="fas fa-minus-circle"></i>
 								</button>
 								<button class="btn_update_servings" data-update-to=${this._data.servings + 1}>
-									<i class="fad fa-plus-circle"></i>
+									<i class="fas fa-plus-circle"></i>
 								</button>
 							</div>
 						</div>
@@ -55,13 +55,13 @@ class RecipeView extends View {
 							${
 								this._data.key === config.API_KEY
 									? `<div class="recipe-user-icon">
-                            				<i class="fad fa-user-circle"></i>
+                            				<i class="fas fa-user-circle"></i>
                         				</div>`
 									: ``
 							}
 							
 							<div class="btn__bookmark ${this._data.bookmarked ? "bookmark__selected" : ""}">
-								<i class="fad fa-bookmark"></i>
+								<i class="fas fa-bookmark"></i>
 							</div>
 						</div>
 					</div>
@@ -131,8 +131,8 @@ class RecipeView extends View {
 											) {
 												return `
 											<div class="list-tile">
-												<i class="fad fa-check-circle"></i>
-												<i class="fad fa-cart-plus"></i>
+												<i class="fas fa-check-circle"></i>
+												<i class="fas fa-shopping-cart"></i>
 												<li>
 													<span class="quantity">${
 														ing.quantity == null
@@ -164,8 +164,8 @@ class RecipeView extends View {
 											)
 												return `
 										<div class="list-tile">
-											<i class="fad fa-check-circle"></i>
-											<i class="fad fa-cart-plus"></i>
+											<i class="fas fa-check-circle"></i>
+											<i class="fas fa-shopping-cart"></i>
 											<li>
 												<span class="quantity">${
 													ing.quantity == null
@@ -182,7 +182,7 @@ class RecipeView extends View {
 							</div>
 						</ul>
 						<div class="link-shopping-list">
-							<i class="fad fa-plus"></i>
+							<i class="fas fa-plus"></i>
 							<a data-bs-toggle="modal" data-bs-target="#linkModal">Click on the item to add to the shopping list!</a>
 						</div>
 					</div>
@@ -201,7 +201,7 @@ class RecipeView extends View {
 								this._data.source_url
 							}">
 								Direction
-								<i class="fad fa-arrow-circle-right"></i>
+								<i class="fas fa-arrow-circle-right"></i>
 							</a>
 						</button>
 					</div>
@@ -209,7 +209,7 @@ class RecipeView extends View {
 						<h3>Plan your meal</h3>
 						<div class="plan-your-meal-category">
 							<div class="meal-category weekdays">
-								<label for="weekday"><i class="fad fa-calendar-edit"></i> Weekdays</label>
+								<label for="weekday"><i class="fas fa-calendar-alt"></i> Weekdays</label>
 								<select class="form-select" name="weekday" id="weekday">
 									<option value="0">Monday</option>
 									<option value="1">Tuesday</option>
@@ -221,7 +221,7 @@ class RecipeView extends View {
 								</select>
 							</div>
 							<div class="meal-category meal-type">
-								<label for="mealType"><i class="fad fa-burger-soda"></i> Meal Type</label>
+								<label for="mealType"><i class="fas fa-utensils"></i> Meal Type</label>
 								<select class="form-select" name="mealType" id="mealType">
 									<option value="0">Breakfast</option>
 									<option value="1">Lunch</option>
@@ -230,7 +230,7 @@ class RecipeView extends View {
 								</select>
 							</div>
 							<div class="meal-category week-type">
-								<label for="weekType"><i class="fad fa-retweet-alt"></i> Meal Type</label>
+								<label for="weekType"><i class="fas fa-sync-alt"></i> Meal Type</label>
 								<select class="form-select" name="weekType" id="weekType">
 									<option value="0">Current Week</option>
 								</select>
@@ -238,15 +238,15 @@ class RecipeView extends View {
 						</div>
 						<button type="submit" class="btn-meal-planner">
 							Submit
-							<i class="fad fa-arrow-circle-right"></i>
+							<i class="fas fa-arrow-circle-right"></i>
 						</button>
 						<div class="meal-planner-link">
-							<i class="fad fa-calendar-alt"></i>
+							<i class="fas fa-calendar-alt"></i>
 							<p>Check your <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#plannerModal">Meal Planner</a></p>
 						</div>
 						<div class="timer">
 							<p class="timer_text mb-0">
-								<i class="fad fa-clock"></i>
+								<i class="fas fa-clock"></i>
 								You will be logged out in
 								<span class="session_timer">09:59</span>
 							</p>

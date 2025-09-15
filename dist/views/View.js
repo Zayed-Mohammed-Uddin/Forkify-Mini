@@ -63,7 +63,7 @@ export default class View {
 	_renderError() {
 		const markup = this._parentEl.classList.contains("modal-container")
 			? `<div class="shopping--list--message d-flex">
-                <i class="fad fa-shopping-cart"></i>
+                <i class="fas fa-shopping-cart"></i>
                 <p>${this._message}</p>
             </div>`
 			: `<div class="error">
@@ -79,14 +79,14 @@ export default class View {
 		if (this._parentEl.classList.contains("newModal")) {
 			markup = `
 			<div class="message">
-				<i class="fad fa-check-circle"></i>
+				<i class="fas fa-check-circle"></i>
 				<p>${this._message}</p>
 			</div>`;
 		} else {
 			markup = `
 				<div class="col-md-6">
 					<div class="info-service">
-						<i class="fad fa-search"></i>
+						<i class="fas fa-search"></i>
 						<h6>Search over 1,000,000 recipes</h6>
 						<p class="mb-0">
 							Bookmark them, add recipes to your weekly meal
@@ -96,7 +96,7 @@ export default class View {
 				</div>
 				<div class="col-md-6">
 					<div class="info-service">
-						<i class="fad fa-edit"></i>
+						<i class="fas fa-edit"></i>
 						<h6>Add your favorite recipes</h6>
 						<p class="mb-0">
 							Give us an URL of your favorite recipe on the
@@ -106,7 +106,7 @@ export default class View {
 				</div>
 				<div class="col-md-6">
 					<div class="info-service">
-						<i class="fad fa-clipboard-list"></i>
+						<i class="fas fa-clipboard-list"></i>
 						<h6>Personalize your shopping list</h6>
 						<p class="mb-0">
 							Personal or recipe-selected ingredients can be
@@ -116,7 +116,7 @@ export default class View {
 				</div>
 				<div class="col-md-6">
 					<div class="info-service mb-5">
-						<i class="fad fa-calendar-alt"></i>
+						<i class="fas fa-calendar-alt"></i>
 						<h6>Find all your future meals</h6>
 						<p class="mb-0">
 							Take time every monday to think about your
