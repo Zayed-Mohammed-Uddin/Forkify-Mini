@@ -1,5 +1,5 @@
 "use strict";
-import fracty from "../../node_modules/fracty/fracty.js";
+import fracty from "../../fracty.js";
 import * as config from "../config.js";
 import View from "./View.js";
 
