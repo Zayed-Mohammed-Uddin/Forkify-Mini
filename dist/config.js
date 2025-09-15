@@ -1,5 +1,5 @@
 "use strict";
-export const API_URL = "https://forkify-api.jonas.io/api/v2/recipes";
+export const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes";
 export const API_KEY = `ee3e0cb4-58e7-41f8-9370-3ea398c25048`;
 export const SPOONACULAR_API_URL =
 	"https://api.spoonacular.com/recipes/parseIngredients";
